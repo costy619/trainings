@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 public class FileListSpecificExtension {
-    public static void main(String a[]) {
+    public static void main(String[] args) {
         String extensie=".docx";
-        File file = new File("C:\\Users\\constantinb\\Documents\\");
+        File file = new File("C:\\Users\\constantinb");
         String[] fileList = file.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
@@ -18,8 +18,7 @@ public class FileListSpecificExtension {
             }
         });
         for (int i=0;i<=fileList.length;i++) {
-
-           try{
+            try{
                System.out.println(fileList[i]);
            }
            catch (ArrayIndexOutOfBoundsException e){
