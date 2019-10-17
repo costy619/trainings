@@ -2,29 +2,27 @@ package problema2;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.net.CacheRequest;
 
 public class FileListSpecificExtension {
     public static void main(String[] args) {
-        String extensie=".docx";
+        String ext = ".docx";
         File file = new File("C:\\Users\\constantinb");
-        String[] fileList = file.list(new FilenameFilter() {
+        String[] list = file.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                if (name.toLowerCase().endsWith(extensie))
+                if (name.toLowerCase().endsWith(ext)) {
                     return true;
-                else{
+                } else {
                     return false;
                 }
             }
         });
-        for (int i=0;i<=fileList.length;i++) {
-            try{
-               System.out.println(fileList[i]);
-           }
-           catch (ArrayIndexOutOfBoundsException e){
-               System.out.println("nu mai sunt fisier de tip " + extensie);
-           }
+        for (String f : list) {
+            System.out.println(f);
         }
     }
 }
+
+
 
