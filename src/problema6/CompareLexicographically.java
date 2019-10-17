@@ -13,57 +13,67 @@ public class CompareLexicographically {
         ArrayList<String> myList = new ArrayList<>();
 
 
-               while (true) {
-                   try {
-                       System.out.println("Introdu fisierul 1 - ");
-                       Scanner keyboard = new Scanner(System.in);
-                       File file = new File(keyboard.nextLine());
-                       Scanner sc = new Scanner(file);
+        while (true) {
+            if(myList.size()==0){
+            try {
+                Scanner sc = getScannerFisiere("Introdu fisierul 1 - ");
 
-                       while (sc.hasNextLine()) {
-
-                           myList.add(sc.nextLine());
-                       }
-                       for (int i = 0; i < myList.size(); i++) {
-                           System.out.print(" : " + myList.get(i));
-                       }
-                   } catch (FileNotFoundException e) {
-                       System.out.println("Reintrodu alt path");
-
-                   }
-
+                while (sc.hasNextLine()) {
+                    myList.add(sc.nextLine());
+                }
+                for (int i = 0; i < myList.size(); i++) {
+                    System.out.print(" : " + myList.get(i));
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("Reintrodu alt path");
+            }
+            }
+            if (myList.size() > 0) {
                 ArrayList<String> myList1 = new ArrayList<String>();
-                try {
-                    System.out.println("Introdu fisierul 2 - ");
-                    Scanner keyboard1 = new Scanner(System.in);
-                    File file1 = new File(keyboard1.nextLine());
-                    Scanner sc = new Scanner(file1);
+                while (true) {
+                    try {
 
-                    while (sc.hasNextLine()) {
+                        Scanner sc = getScannerFisiere("Introdu fisierul 2 - ");
+                        while (sc.hasNextLine()) {
 
-                        myList1.add(sc.nextLine());
+                            myList1.add(sc.nextLine());
+                        }
+                        for (int i = 0; i < myList1.size(); i++) {
+                            System.out.print(" : " + myList1.get(i));
+                        }
+
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Reintrodu alt path");
+
                     }
-                    for (int i = 0; i < myList1.size(); i++) {
-                        System.out.print(" : " + myList1.get(i));
+
+
+                    System.out.println();
+
+                    if (myList.equals(myList1)) {
+                        System.out.println("Listele egale");
+                    } else {
+                        System.out.println("Ceva nu a mers bine");
                     }
-                } catch (FileNotFoundException e) {
-                    System.out.println("Reintrodu alt path");
+
+
+                }
+            }
 
                 }
 
-
-                System.out.println();
-
-                if (myList.equals(myList1)) {
-                    System.out.println(" bla");
-                } else
-                    System.out.println("hjfhjfu");
-
-
-            }
         }
 
-}
+
+        private static Scanner getScannerFisiere (String s) throws FileNotFoundException {
+            System.out.println(s);
+            Scanner keyboard = new Scanner(System.in);
+            File file = new File(keyboard.nextLine());
+            return new Scanner(file);
+        }
+
+    }
+
 
 
 
