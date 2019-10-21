@@ -1,79 +1,50 @@
 package problema6;
 
-import inheritance.Account;
-
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CompareLexicographically {
     public static void main(String[] args) {
-
         ArrayList<String> myList = new ArrayList<>();
+        ArrayList<String> myList1 = new ArrayList<String>();
+        populateListAndShowing(myList);
+        populateListAndShowing(myList1);
+        printingResults(myList, myList1);
 
 
+    }
+
+
+    private static void populateListAndShowing(ArrayList<String> myList1) {
         while (true) {
-            if (myList.size() == 0) {
-                try {
-
-                    Scanner sc = getScannerFisiere("Introdu fisierul 1 - ");
-
-                    while (sc.hasNextLine()) {
-                        myList.add(sc.nextLine());
-                    }
-                    System.out.println("Continutul primului Fisier este ");
-
-                    for (int i = 0; i < myList.size(); i++) {
-
-                        System.out.print(" : " + myList.get(i));
-                    }
-                } catch (FileNotFoundException e) {
-                    System.out.println("Reintrodu alt path");
+            try {
+                System.out.println();
+                Scanner sc = getScannerFisiere("Introdu fisierul 2 - ");
+                while (sc.hasNextLine()) {
+                    myList1.add(sc.nextLine());
                 }
+                System.out.println("Continutul ultimului Fisier este ");
+                for (int i = 0; i < myList1.size(); i++) {
+
+                    System.out.print(" : " + myList1.get(i));
+                }
+                break;
+            } catch (FileNotFoundException e) {
+                System.out.println("Reintrodu alt path");
             }
-            if (myList.size() > 0) {
+        }
+    }
 
-                ArrayList<String> myList1 = new ArrayList<String>();
-                while (true) {
+    private static void printingResults(ArrayList<String> myList, ArrayList<String> myList1) {
+        System.out.println();
+        if (myList.equals(myList1)) {
+            System.out.println("Listele egale");
+            return;
 
-
-                    try {
-                        System.out.println();
-                        Scanner sc = getScannerFisiere("Introdu fisierul 2 - ");
-                        while (sc.hasNextLine()) {
-
-                            myList1.add(sc.nextLine());
-                        }
-                        System.out.println("Continutul ultimului Fisier este ");
-                        for (int i = 0; i < myList1.size(); i++) {
-
-                            System.out.print(" : " + myList1.get(i));
-                        }
-
-                    } catch (FileNotFoundException e) {
-                        System.out.println("Reintrodu alt path");
-                    }
-
-
-                    System.out.println();
-                    if (myList.equals(myList1)) {
-                        System.out.println("Listele egale");
-                        break;
-
-                    } else {
-                        System.out.println("Ceva nu a mers bine si nu am putut compara listele te rugam mai incearca");
-                        break;
-                    }
-
-                }
-                if (myList.equals(myList1)) {
-                    System.out.println("Bravo ai terminat");
-                    break;
-                }
-
-
-            }
+        } else {
+            System.out.println("Ceva nu a mers bine si nu am putut compara listele te rugam mai incearca");
+            return;
         }
     }
 

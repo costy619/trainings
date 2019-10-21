@@ -12,7 +12,7 @@ public class FileHasReadOrWritePerm {
             System.out.println("Introdu fisierul- ");
             Scanner keyboard = new Scanner(System.in);
             File file = new File(keyboard.nextLine());
-            while (file.exists()) {
+           if(file.exists()) {
                 if (file.canWrite()) {
 
                     System.out.println("Writable: ");

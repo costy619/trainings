@@ -11,6 +11,7 @@ public class PathExistsOrNot {
         String[] fileList = file.list();
             for (int i=0;i<=fileList.length;i++) {
                 System.out.println(fileList[i]);
+                break;
             }
         }
     }
