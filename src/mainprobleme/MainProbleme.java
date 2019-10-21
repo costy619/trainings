@@ -43,6 +43,9 @@ public class MainProbleme {
 //                }
 //                if (n == 9) {   //C:\\Users\\JohnSmith\\Documents\\Test.txt
 //                    Size.Kb();
+                    if(n==0){
+                        break;
+                    }
                 }
                 catch (InputMismatchException e){
                     System.out.println("Reintrodu o optiune ");

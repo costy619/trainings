@@ -12,10 +12,10 @@ public class FileListFromFolder {
             File file = new File(keyboard.nextLine());
             String[] fileList = file.list();
             if (file.exists()) {
+                System.out.println("Lista documentelor este ");
                 for (int i = 0; i < fileList.length; i++) {
-                    System.out.println("Lista documentelor este ");
+                    System.out.println(fileList[i]);
                 }
-
                 break;
             } else System.out.println("nu exista");
         }
