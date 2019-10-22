@@ -21,23 +21,28 @@ public class FileListSpecificExtension {
             if (file.exists()) {
                 System.out.println("Introdu extensia ");
 
-            String extensie = keyboard.nextLine();
-            String[] fileList = file.list();
+                if(file.isDirectory()) {
+                    String[] fileList = file.list();
+                    String extensie = keyboard.nextLine();
 
-                for (int i = 0; i < fileList.length; i++) {
-                    if (fileList[i].endsWith(extensie)) {
-                        listaCuExtensii.add(fileList[i]);
+                    for (int i = 0; i < fileList.length; i++) {
+                        if (fileList[i].endsWith(extensie)) {
+                            listaCuExtensii.add(fileList[i]);
+                        }
+
                     }
+                    for (int i = 0; i < listaCuExtensii.size(); i++) {
 
+                        System.out.print(" : " + listaCuExtensii.get(i));
+                    }
+                    if (listaCuExtensii.size() == 0) {
+                        System.out.println("Extensia " + extensie + " nu a fost gasita");
+                    }
+                    break;
                 }
-                for (int i = 0; i < listaCuExtensii.size(); i++) {
-
-                    System.out.print(" : " + listaCuExtensii.get(i));
+                else {
+                    System.out.println("nu are o lista de fisiere, reintroduceti un director");
                 }
-                if(listaCuExtensii.size()==0){
-                    System.out.println("Extensia " +extensie+ " nu a fost gasita");
-                }
-                break;
             } else System.out.println("Path-ul nu este bun");
 
         }

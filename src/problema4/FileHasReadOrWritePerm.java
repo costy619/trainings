@@ -7,11 +7,12 @@ import java.security.Permission;
 import java.util.Scanner;
 
 public class FileHasReadOrWritePerm {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void fileHasReadOrWritePerm(){
         while (true) {
-            System.out.println("Introdu fisierul- ");
-            Scanner keyboard = new Scanner(System.in);
-            File file = new File(keyboard.nextLine());
+
+                System.out.println("introdu path-ul fisierul dorit- ");
+                Scanner keyboard = new Scanner(System.in);
+                File file = new File(keyboard.nextLine());
            if(file.exists()) {
                 if (file.canWrite()) {
 
@@ -24,8 +25,13 @@ public class FileHasReadOrWritePerm {
                 } else {
                     System.out.println("Not Readable: ");
                 }
+                break;
+            }else{
+               System.out.print("Fisierul nu exista te rugam re-");
+
             }
-        }
+
+            }
         }
     }
 

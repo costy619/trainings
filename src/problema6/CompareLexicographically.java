@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CompareLexicographically {
-    public static void main(String[] args) {
+    public static void compareLexicographically() {
         ArrayList<String> myList = new ArrayList<>();
         ArrayList<String> myList1 = new ArrayList<String>();
         populateListAndShowing(myList);
         populateListAndShowing(myList1);
         printingResults(myList, myList1);
-
-
     }
 
 
@@ -20,13 +18,11 @@ public class CompareLexicographically {
         while (true) {
             try {
                 System.out.println();
-                Scanner sc = getScannerFisiere("Introdu fisierul 2 - ");
+                Scanner sc = getScannerFisiere("Introdu fisierul  - ");
                 while (sc.hasNextLine()) {
                     myList1.add(sc.nextLine());
                 }
-                System.out.println("Continutul ultimului Fisier este ");
                 for (int i = 0; i < myList1.size(); i++) {
-
                     System.out.print(" : " + myList1.get(i));
                 }
                 break;
