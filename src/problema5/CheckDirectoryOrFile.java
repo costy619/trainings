@@ -19,6 +19,7 @@ public class CheckDirectoryOrFile {
                 if (file.isFile()) {
                     System.out.println("is file");
                 }
+                break;
             } else {
                 System.out.println("Fisierul nu exista te rugam re-");
             }

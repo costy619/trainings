@@ -7,12 +7,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReadFirst3linesFromAfile {
-    public static void main(String[] args) {
+    public static void readFirst3linesFromAfile() {
 
         ArrayList<String> myList = new ArrayList<>();
         Scanner keyboard = new Scanner(System.in);
 
-double n;
+        double n;
         while (true) {
             try {
                 System.out.println(" cate randuri vrei sa citesti");
