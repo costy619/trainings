@@ -26,7 +26,7 @@ public class MainProbleme {
         System.out.println("15. Adaugare continut intr-un fisier gol");
         System.out.println("16. Adaugare continut intr-un fisier deja scris");
         System.out.println("17. Citim N linii dintrun fisier");
-        System.out.println("18. Compara lexicografic");
+        System.out.println("18. Cel mai lung cuvant dintr-un fisier");
         System.out.println("0. Stop the application");
         MainProbleme p = new MainProbleme();
         Scanner s = new Scanner(System.in);
