@@ -18,19 +18,18 @@ public class AppendTextToAnExistingFile {
             try {
                 if (file.exists()) {
                     fw = new FileWriter(file, true);
-                    bw = new BufferedWriter(fw);
+                    fw.append("asda");
                     out = new PrintWriter(bw);
 
                     System.out.println("introdu text in fisier");
                     out.println(keyboard.nextLine());
                     out.close();
                     break;
-                }
-            } catch (FileNotFoundException e) {
-                System.out.println("Reintrodu path-ul");
+                } else System.out.println("Reintrodu path-ul");
+
+
             } catch (IOException e) {
                 e.printStackTrace();
-
             } finally {
                 if (out != null)
                     out.close();
@@ -51,6 +50,6 @@ public class AppendTextToAnExistingFile {
 
     }
 
-    }
+}
 
 
