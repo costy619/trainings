@@ -8,6 +8,18 @@ import static java.lang.Integer.*;
 
 public class Application {
     public static void main(String[] args) throws NullPointerException {
+        ArrayList<String> fisier = new ArrayList<>();
+        creareListaCuDate(fisier);
+        ArrayList<Destination> destinations = new ArrayList<>();
+        ArrayList<Hotel> hotels = new ArrayList<>();
+        creareListe(fisier, destinations, hotels);
+        afisareListeCreate(destinations);
+        String g = introducereDeLaTastatura();
+        existentaTara(destinations, g);
+        hoteluriCuAcelasiPret(hotels);
+    }
+
+    private static void creareListaCuDate(ArrayList<String> fisier) {
         File file = new File("C:\\Users\\constantinb\\Documents\\Destination.txt");
         Scanner sc = null;
         try {
@@ -15,17 +27,43 @@ public class Application {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        ArrayList<String> fisier = new ArrayList<>();
-        ArrayList<Destination> destinations = new ArrayList<>();
-        List cities = null;
-        ArrayList<Hotel> hotels = null;
-
         while (sc.hasNextLine()) {
             fisier.add(sc.nextLine());
         }
+    }
 
 
+    private static void hoteluriCuAcelasiPret(ArrayList<Hotel> hotels) {
+        for (int y = 1; y < hotels.size(); y++) {
+            for (int b = y+1; b < hotels.size(); b++) {
+                if (hotels.get(y).getPrice() == hotels.get(b).getPrice()) {
+                    System.out.println(hotels.get(y).getName()+ " "+ hotels.get(b).getName());
+                }
+            }
+
+        }
+    }
+
+    private static void existentaTara(ArrayList<Destination> destinations, String g) {
+        Boolean x = true;
+        for (int k = 0; k < destinations.size(); k++) {
+            String[] v = (destinations.get(k).getCountry().split("-"));
+            if (v[1].equals(g)) {
+                x = false;
+            }
+        }
+        if (x == false) {
+            System.out.println("Tara exista in lista de destinatii ");
+        } else System.out.println("Tara nu exista in lista de destinatii");
+    }
+
+    private static String introducereDeLaTastatura() {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Introduceti tara pe care sa o cauti ");
+        return keyboard.nextLine();
+    }
+
+    private static void creareListe(ArrayList<String> fisier, ArrayList<Destination> destinations, ArrayList<Hotel> hotels) {
         for (int i = 0; i < fisier.size(); i++) {
             if (fisier.get(i).startsWith("C-")) {
                 Destination d = new Destination();
@@ -43,7 +81,7 @@ public class Application {
                                 Hotel h = new Hotel();
                                 h.setName(fisier.get(a));
                                 c.getHotels().add(h);
-
+                                hotels.add(h);
                                 for (int m = a + 1; m < fisier.size(); m++) {
 
                                     if (fisier.get(m).startsWith("R-")) {
@@ -90,6 +128,9 @@ public class Application {
             }
         }
 
+    }
+
+    private static void afisareListeCreate(ArrayList<Destination> destinations) {
         for (int k = 0; k < destinations.size(); k++) {
             System.out.println(destinations.get(k).getCountry());
             Destination d = destinations.get(k);
@@ -105,40 +146,8 @@ public class Application {
                 }
             }
         }
-
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("introduceti tara pe care vreti sa o modificati ");
-        String g = keyboard.nextLine();
-        Boolean x = true;
-        while (true) {
-            for (int k = 0; k < destinations.size(); k++) {
-                if (destinations.get(k).getCountry().contains(g)) {
-                    x = false;
-                }
-            }
-            if (x == false) {
-                System.out.println("tara exista in lista de destinatii ");
-                break;
-            } else System.out.println("tara nu exista in lista de destinatii");
-            break;
-        }
-        for (int k = 0; k < destinations.size(); k++) {
-            Destination d = destinations.get(k);
-            for (int l = 0; l < d.getCities().size(); l++) {
-                City c = d.getCities().get(l);
-                for (int b = 0; b < c.getHotels().size(); b++) {
-                    for (int y = 1; y < c.getHotels().size(); y++) {
-                        if (c.getHotels().get(b).getPrice() == c.getHotels().get(y).getPrice()) {
-                            System.out.println(c.getHotels().get(b).getName() + " cu " + c.getHotels().get(y).getName());
-                        }
-                    }
-                }
-            }
-        }
-
     }
 }
-
 
 
 
