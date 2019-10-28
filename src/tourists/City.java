@@ -24,6 +24,6 @@ public class City {
 
     @Override
     public String toString() {
-         return String.format(name);
+         return name;
     }
 }

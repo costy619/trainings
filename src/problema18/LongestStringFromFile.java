@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class LongestStringFromFile {
+public class  LongestStringFromFile {
     public static void longestStringFromFile() {
 
 

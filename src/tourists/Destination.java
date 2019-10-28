@@ -23,4 +23,6 @@ public class Destination {
     public void setCities(ArrayList<City> cities) {
         this.cities = cities;
     }
+
+
 }

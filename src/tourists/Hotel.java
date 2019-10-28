@@ -37,4 +37,9 @@ public class Hotel {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+    @Override
+        public String toString() {
+            return name;
+        }
 }
