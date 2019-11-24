@@ -1,10 +1,10 @@
 package tourists;
 
 public class Hotel {
-    private int availableRooms;
+    private int availableRooms = 22;
     private double price;
     private String name;
-    private int rating;
+    private Double rating;
 
     public int getAvailableRooms() {
         return availableRooms;
@@ -30,13 +30,15 @@ public class Hotel {
         this.name = name;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
+
+
 
     @Override
         public String toString() {

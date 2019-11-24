@@ -2,150 +2,124 @@ package tourists;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.*;
 
 import static java.lang.Integer.*;
 
 public class Application {
+     public static ArrayList<Hotel> hotels = new ArrayList<>();
     public static void main(String[] args) throws NullPointerException {
 
         ArrayList<String> fisier = new ArrayList<>();
         creareListaCuDate(fisier);
         ArrayList<Destination> destinations = new ArrayList<>();
-        ArrayList<Hotel> hotels = new ArrayList<>();
+        ArrayList<Hotel> sortarePret=new ArrayList<>() ;
+        ArrayList<Hotel> sortareRating =new ArrayList<>();
+
+
         creareListe(fisier, destinations, hotels);
-//        afisareListeCreate(destinations);
+        afisareListeCreate(destinations);
 //        System.out.println("Introduceti tara pe care sa o cauti ");
 //        String g = introducereDeLaTastatura();
 //        existentaTara(destinations, g);
-//        hoteluriCuAcelasiPret(hotels);
-        AfisareHoteluriInFunctieDePret(hotels);
-//        System.out.println("introdu suma pe care vrei sa o folosesti pentru a gasi combinatia de hoteluri");
-//        problema1(hotels);
-//        System.out.println(" introdu pretul pe care vrei sa in vezi de cate ori se repeta");
-//        problema2(hotels);
-//        System.out.println(" situatia preturilor care se repeta");
-//        problema3primaVarianta(hotels);
-//        ArrayList<String>hoteluri=new ArrayList<>();
-//        problema3Adouavarianta(hotels, hoteluri);
-        Problema6(hotels);
+        hoteluriCuAcelasiPret(hotels);
+        problema1SortareDupaPretCrescator(sortarePret);
+//        problema2SortareDupaRating(sortareRating);
+        problema3AdaugareInFisier();
+
+       Set<Double> map=new HashSet<>();
+        Iterator<Hotel> iterator1 = hotels.iterator();
+
+        while(iterator1.hasNext()){
+            Hotel el=iterator1.next();
+                map.add(el.getPrice());
+        }
+
+        Iterator<Double> iterator = map.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+
+
+
     }
 
-    private static void Problema6(ArrayList<Hotel> hotels) {
-        //trebuia sa pui sau sa scoti din comentariu metoda  AfisareHoteluriInFunctieDePret(hotels);
-        //cand o scoti din comentariu trebuie sa arate ca e sortata
-        int c = 0;
-        int a = 0;
-        int b = 0;
-        for (int i = 0; i < hotels.size() - 1; i++) {
-            if (hotels.get(0).getPrice() < hotels.get(i + 1).getPrice()) {
-                if (hotels.get(i).getPrice() > hotels.get(i + 1).getPrice()) {
-                    break;
-                }
-                c++;
-                a++;
 
-            } else {
-                if (hotels.get(i).getPrice() < hotels.get(i + 1).getPrice()) {
-                    break;
+    private static void problema3AdaugareInFisier() {
+        ArrayList<String> tempArray=new ArrayList<>();
+        try{
+            try{
+                FileReader fr=new FileReader("C:\\Users\\constantinb\\Documents\\ana.txt");
+                Scanner reader=new Scanner(fr);
+                Scanner keyboard=new Scanner(System.in);
+                System.out.println("Introduceti orasul unde vreti sa adaugati hotelul");
+                String oras=keyboard.nextLine();
+                System.out.println("Introduceti numele Hotelui nou");
+                String hotel=keyboard.nextLine();
+                System.out.println("Introduceti ratingul hotelului");
+                String rating=keyboard.nextLine();
+                System.out.println("Introduceti numarul de camere disponibile");
+                String numarCamere=keyboard.nextLine();
+                System.out.println("Introduceti pretul hotelului");
+                String pret=keyboard.nextLine();
+                String line;
+                String[] lineArr;
+                while((line=reader.nextLine())!=null){
+                    lineArr=line.split("-");
+                    if(lineArr[1].equals(oras)){
+                        tempArray.add(lineArr[0]+"-"+lineArr[1]);
+                        tempArray.add("H-"+hotel);
+                        tempArray.add("R-"+rating);
+                        tempArray.add("NC-"+numarCamere);
+                        tempArray.add("P-"+pret);
+
+                    }else tempArray.add(line);
                 }
-                c++;
-                b++;
+                fr.close();
+
+            } catch (FileNotFoundException e) {
             }
+        } catch (Exception e){
+
         }
-        if (c == hotels.size() - 1 && a == hotels.size() - 1) {
-            System.out.println(" lista sortata Crescator");
-
-        } else {
-            if (c == hotels.size() - 1 && b== hotels.size() - 1) {
-                System.out.println(" lista sortata Descrescator");
-            } else System.out.println("lista nesortata");
-        }
-    }
-
-
-    private static void problema3Adouavarianta(ArrayList<Hotel> hotels, ArrayList<String> hoteluri) {
-
-        System.out.println(" a doua varianta a problemei 3");
-        for(int i=0; i<hotels.size(); i++) {
-            int c=0;
-            for (int k = 1; k < hotels.size(); k++) {
-                if (hotels.get(i).getPrice() == hotels.get(k).getPrice()) {
-                    c++;
-
-                } else {
-
+        try {
+            try {
+                PrintWriter pr=new PrintWriter("C:\\Users\\constantinb\\Documents\\ana.txt");
+                for(int i=0;i<tempArray.size();i++){
+                    pr.println((tempArray.get(i)));
                 }
-            }
-            hoteluri.add("Pretul  "+ hotels.get(i).getPrice()+" al hotelului " +hotels.get(i).getName()+ " se repeta de " +String.valueOf(c)+" ori");
-        }
+                pr.close();
 
-        for (int i= 0; i < hoteluri.size(); i++) {
-            System.out.println(hoteluri.get(i));
+            } catch (Exception e) {
+
+            }
+        }catch (Exception e){
+
         }
     }
 
-    private static void problema3primaVarianta(ArrayList<Hotel> hotels) {
-        System.out.println(" prima varianta");
+    private static void problema2SortareDupaRating(ArrayList<Hotel> sortareRating) {
+        System.out.println(" Afisare Hoteluri In Functie De rating ");
         for (int i= 0; i < hotels.size(); i++) {
-            int c=0;
-            for (int k =1; k < hotels.size(); k++) {
-                if (hotels.get(i).getPrice() == hotels.get(k).getPrice()) {
-                    c++;
+            for (int j = i + 1; j < hotels.size(); j++) {
+                if (hotels.get(i).getRating() > hotels.get(j).getRating()) {
+                    Hotel temp = hotels.get(i);
+                    hotels.set(i, hotels.get(j));
+                    hotels.set(j, temp);
                 }
             }
-            System.out.println( "Pretul  "+ hotels.get(i).getPrice()+" al hotelului " +hotels.get(i).getName()+ " se repeta de " +c+" ori");
+            sortareRating.add(hotels.get(i));
+        }
+        for (int i= 0; i < sortareRating.size(); i++){
+            System.out.println(sortareRating.get(i).getName());
+            System.out.println(sortareRating.get(i).getRating());
         }
     }
 
-    private static void problema2(ArrayList<Hotel> hotels) {
-       try {
-           int r = parseInt(introducereDeLaTastatura());
-           int c = 0;
-           int m;
-           for (int i = 0; i < hotels.size(); i++) {
-               if (hotels.get(i).getPrice() == r) {
-                   c++;
-               }
-           }
-           if (c > 0) {
-               System.out.println(" Pretul " + r + " apare de " + c + " ori");
-           } else System.out.println(" Elementul nu apare niciodata ");
-       }catch (NumberFormatException e) {
-            System.out.println("caracter invalid");
-        }
-    }
 
-    private static void problema1(ArrayList<Hotel> hotels) {
-      try {
-          try {
-              double n = Double.parseDouble(introducereDeLaTastatura());
-
-              boolean v = true;
-              for (int i = 0; i < hotels.size(); i++) {
-                  for (int k = 1; k < hotels.size(); k++) {
-                      if (hotels.get(i).getPrice() + hotels.get(k).getPrice() == n) {
-                          if (hotels.get(i).getName().equals(hotels.get(k).getName())) {
-
-                          } else {
-                              System.out.println(hotels.get(i).getName() + " " + hotels.get(k).getName() + " au suma " + n);
-                          }
-                          v = false;
-                      }
-                  }
-              }
-              if (v == true) {
-                  System.out.println(" nu exista hoteluri cu suma preturilor " + n);
-              }
-          }catch (NumberFormatException e){
-              System.out.println("caracter invalid");
-          }
-      }catch (NoSuchElementException e) {
-          System.out.println("suma nu poate fi compusa");
-      }
-    }
-
-    private static void AfisareHoteluriInFunctieDePret(ArrayList<Hotel> hotels) {
+    private static void problema1SortareDupaPretCrescator(ArrayList<Hotel> sortarePret) {
         System.out.println(" Afisare Hoteluri In Functie De Preturi Crescatoare ");
         for (int i= 0; i < hotels.size(); i++) {
             for (int j = i + 1; j < hotels.size(); j++) {
@@ -155,10 +129,11 @@ public class Application {
                     hotels.set(j, temp);
                 }
             }
+            sortarePret.add(hotels.get(i));
         }
-        for (int i= 0; i < hotels.size(); i++){
-            System.out.println(hotels.get(i).getName());
-            System.out.println(hotels.get(i).getPrice());
+        for (int i= 0; i < sortarePret.size(); i++){
+            System.out.println(sortarePret.get(i).getName());
+            System.out.println(sortarePret.get(i).getPrice());
         }
 
     }
