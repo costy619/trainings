@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Autentificare {
+    public static final String C_USERS_CONSTANTINB_DOCUMENTS_ANA_TXT = "C:\\Users\\constantinb\\Documents\\ana.txt";
     private static ArrayList<Hotel> hotels = new ArrayList<>();
     private static ArrayList<Destination> destinations = new ArrayList<>();
     private static ArrayList<Hotel> sortarePret = new ArrayList<>();
@@ -28,7 +29,7 @@ public class Autentificare {
         meniu(ListaCuTipuriDeUseri, pozitieTipUser);
 //        afisareListeCreate(destinations);
 
-        }
+    }
 
     private static void capabilDeAOferiRating() {
         ArrayList<String> tempArray = new ArrayList<>();
@@ -67,7 +68,7 @@ public class Autentificare {
             }
         } else
             System.out.println("Nu puteti oferi rating pentru hotelul" + hotel);
-        if (poateDaRating==true) {
+        if (poateDaRating == true) {
 
             ArrayList<String> tempArray1 = new ArrayList<>();
             int pozitiaHotelului = 0;
@@ -95,27 +96,37 @@ public class Autentificare {
 
             }
             try {
-                if (pozitiaHotelului > 0) {
-                    System.out.println("Introduceti noul rating al hotelului");
-                    rating = Double.parseDouble(keyboard.nextLine());
-                    String[] lineArr;
-                    for (int i = 0; i < tempArray1.size(); i++) {
-                        lineArr = tempArray1.get(pozitiaHotelului + 1).split("-");
-                        Double c=Double.parseDouble(lineArr[2]);
-                        System.out.println(lineArr[2]);
-                       Double b = Double.parseDouble(lineArr[1]);
-                        tempArray1.remove(tempArray1.get(pozitiaHotelului + 1));
-                        tempArray1.add(pozitiaHotelului + 1, "R-" + (rating + b) /2+"-"+(1+c));
-                        break;
-                    }
-                } else
-                    System.out.println("Hotelul nu exista");
-            } catch(ArrayIndexOutOfBoundsException e) {
+                try {
+                    if (pozitiaHotelului > 0) {
+                        System.out.println("Introduceti noul rating al hotelului");
+                        rating = Double.parseDouble(keyboard.nextLine());
+                        if (rating > 0 && rating < 11) {
+                            String[] lineArr;
+                            for (int i = 0; i < tempArray1.size(); i++) {
+                                lineArr = tempArray1.get(pozitiaHotelului + 1).split("-");
+                                Double c = Double.parseDouble(lineArr[2]);
+                                System.out.println(lineArr[2]);
+                                Double b = Double.parseDouble(lineArr[1]);
+                                tempArray1.remove(tempArray1.get(pozitiaHotelului + 1));
+                                if (c == 0) {
+                                    tempArray1.add(pozitiaHotelului + 1, "R-" + rating + "-" + (1 + c));
+                                } else tempArray1.add(pozitiaHotelului + 1, "R-" + (rating + b) / 2 + "-" + (1 + c));
+                                break;
+                            }
+                        } else
+                            System.out.println("Ratingul trebuie sa fie cuprins intre 0 si 10 apasa iar obtiunea 4 pentru a incerca din nou");
+                    } else
+                        System.out.println("Hotelul nu exista");
+                } catch (NumberFormatException e) {
+                    System.out.println("Ratingul trebuie sa fie un numar cuprins intre 0 si 10 apasa iar obtiunea 4 pentru a incerca din nou");
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
 
             }
             rescriereListaInFisier(tempArray1);
         }
     }
+
     private static void inchiereCamere() {
         ArrayList<String> tempArray = new ArrayList<>();
         int y = 0;
@@ -145,15 +156,20 @@ public class Autentificare {
         if (y > 0) {
             System.out.println("Introduceti numarul de camere pe care vreti sa il inchiriati");
             int nrCamereInchiriate = keyboard.nextInt();
-            for (int i = 0; i < tempArray.size(); i++) {
-                String[] lineArr;
-                lineArr = tempArray.get(y + 2).split("-");
-                int numarCamere = Integer.parseInt(lineArr[1]);
-                tempArray.remove(tempArray.get(y + 2));
-                tempArray.add(y + 2, "NC-" + (numarCamere - nrCamereInchiriate));
-                break;
+            String[] lineArr;
+            lineArr = tempArray.get(y + 2).split("-");
+            int numarCamere = Integer.parseInt(lineArr[1]);
+            if (Integer.parseInt(lineArr[1]) == 0) {
+                System.out.println("Nu mai sunt camere disponibile ");
             }
 
+            if ((Integer.parseInt(lineArr[1]) > 0) && (numarCamere - nrCamereInchiriate >= 0)) {
+                for (int i = 0; i < tempArray.size(); i++) {
+                    tempArray.remove(tempArray.get(y + 2));
+                    tempArray.add(y + 2, "NC-" + (numarCamere - nrCamereInchiriate));
+                    break;
+                }
+            } else System.out.println("Mai sunt disponibile doar " + numarCamere + "camere");
         } else
             System.out.println("Hotelul nu exista");
 
@@ -165,10 +181,10 @@ public class Autentificare {
         try {
             try {
 
-                File file =new File("C:\\Users\\constantinb\\Documents\\costy.txt");
+                File file = new File("C:\\Users\\constantinb\\Documents\\costy.txt");
                 FileWriter fw = new FileWriter(file, true);
-                BufferedWriter bw=new BufferedWriter(fw);
-                PrintWriter sr= new PrintWriter(bw);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter sr = new PrintWriter(bw);
                 sr.println(tempArray.get(y));
                 sr.println(ListaCuUseri.get(pozitieTipUser));
                 System.out.println(tempArray.get(y));
@@ -190,7 +206,7 @@ public class Autentificare {
         try {
             try {
 
-                FileReader fr = new FileReader("C:\\Users\\constantinb\\Documents\\ana.txt");
+                FileReader fr = new FileReader(C_USERS_CONSTANTINB_DOCUMENTS_ANA_TXT);
                 Scanner reader = new Scanner(fr);
 
                 System.out.println("Introduceti numele Hotelui");
@@ -262,9 +278,9 @@ public class Autentificare {
 
             for (int i = 0; i < tempArray.size(); i++) {
                 tempArray.remove(tempArray.get(y + 3));
-                tempArray.add(y+3,"P-" + pret);
+                tempArray.add(y + 3, "P-" + pret);
             }
-        }else
+        } else
             System.out.println("Hotelul nu exista");
 
         rescriereListaInFisier(tempArray);
@@ -290,42 +306,99 @@ public class Autentificare {
 
     private static void adaugareInFisierHotel() {
         ArrayList<String> tempArray = new ArrayList<>();
-        try {
+        boolean existaOras = false;
+        boolean rNCPbineIntroduse = false;
+        String oras = null;
+        String hotel = null;
+        String rating = null;
+        String numarCamere = null;
+        String pret = null;
+
             try {
                 FileReader fr = new FileReader("C:\\Users\\constantinb\\Documents\\ana.txt");
                 Scanner reader = new Scanner(fr);
                 Scanner keyboard = new Scanner(System.in);
+
                 System.out.println("Introduceti orasul unde vreti sa adaugati hotelul");
-                String oras = keyboard.nextLine();
+                oras = keyboard.nextLine();
                 System.out.println("Introduceti numele Hotelui nou");
-                String hotel = keyboard.nextLine();
-                System.out.println("Introduceti ratingul hotelului");
-                String rating = keyboard.nextLine();
-                System.out.println("Introduceti numarul de camere disponibile");
-                String numarCamere = keyboard.nextLine();
-                System.out.println("Introduceti pretul hotelului");
-                String pret = keyboard.nextLine();
+                hotel = keyboard.nextLine();
+                try {
+                    System.out.println("Introduceti ratingul hotelului");
+                    rating = keyboard.nextLine();
+                    if (Integer.parseInt(rating) < 0 || Integer.parseInt(rating) > 11) {
+                        System.out.println("Ratingul este incorect si trebuie sa fie cuprins intre 0 si 10");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Caracterul nu este acceptat trebuie sa introduci cifre  intre 0 si 10");
+                }
+                try {
+                    System.out.println("Introduceti numarul de camere disponibile");
+                    numarCamere = keyboard.nextLine();
+                    if (Integer.parseInt(numarCamere) < 0) {
+                        System.out.println("Numarul de camere este incorect si trebuie sa fie mai mare ca 0");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Caracterul nu este acceptat trebuie sa introduci cifre mai mari ca sau egale cu 0");
+                }
+                try {
+                    System.out.println("Introduceti pretul hotelului");
+                    pret = keyboard.nextLine();
+                    if (Integer.parseInt(pret) < 0) {
+                        System.out.println("Pretul este incorect si trebuie sa fie mai mare ca 0");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Caracterul nu este acceptat trebuie sa introduci cifre mai mari ca sau egale cu 0");
+                }
+
                 String line;
                 String[] lineArr;
-                while ((line = reader.nextLine()) != null) {
-                    lineArr = line.split("-");
-                    if (lineArr[1].equals(oras)) {
-                        tempArray.add(lineArr[0] + "-" + lineArr[1]);
-                        tempArray.add("H-" + hotel);
-                        tempArray.add("R-" + rating);
-                        tempArray.add("NC-" + numarCamere);
-                        tempArray.add("P-" + pret);
+                try {
+                    if ((Integer.parseInt(rating) > 0 && Integer.parseInt(rating) < 11) && (Integer.parseInt(numarCamere) > 0) && (Integer.parseInt(pret) > 0)) {
+                        rNCPbineIntroduse = true;
+                        while ((line = reader.nextLine()) != null) {
+                            lineArr = line.split("-");
 
-                    } else tempArray.add(line);
+                            if (lineArr[1].equals(oras)) {
+                                existaOras = true;
+                                tempArray.add(lineArr[0] + "-" + lineArr[1]);
+                                tempArray.add("H-" + hotel);
+                                tempArray.add("R-" + rating);
+                                tempArray.add("NC-" + numarCamere);
+                                tempArray.add("P-" + pret);
+
+                            } else tempArray.add(line);
+                        }
+                        try {
+                            fr.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else
+                        System.out.println("Datele sunt introduse eronat");
+                } catch (NumberFormatException e) {
                 }
-                fr.close();
-
             } catch (FileNotFoundException e) {
+                System.out.println("Fisierul nu exista");
             }
-        } catch (Exception e) {
 
+
+        if (existaOras == false && rNCPbineIntroduse == true) {
+            System.out.println("Orasul nu exista");
         }
-        rescriereListaInFisier(tempArray);
+        if (existaOras == true && rNCPbineIntroduse == false) {
+            System.out.println("Orasul exista dar datele introduse sunt incorecte");
+        }
+
+        try {
+            if ((Integer.parseInt(rating) > 0 && Integer.parseInt(rating) < 11) && (Integer.parseInt(numarCamere) > 0) && (Integer.parseInt(pret) > 0) && existaOras == true) {
+                rescriereListaInFisier(tempArray);
+                System.out.println("Noul hotel a fost creat cu success");
+            } else System.out.println("Nu s-a putut crea hotel din cauza datelor introduse eronat");
+        } catch (NumberFormatException e) {
+
+            System.out.println("Nu s-a putut crea hotel din cauza datelor introduse eronat");
+        }
     }
 
     private static void problema1SortareDupaPretCrescator(ArrayList<Hotel> sortarePret) {
