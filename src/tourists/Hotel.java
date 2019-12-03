@@ -4,7 +4,7 @@ public class Hotel {
     private int availableRooms = 22;
     private double price;
     private String name;
-    private Double rating;
+    private String rating;
 
     public int getAvailableRooms() {
         return availableRooms;
@@ -30,11 +30,11 @@ public class Hotel {
         this.name = name;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 

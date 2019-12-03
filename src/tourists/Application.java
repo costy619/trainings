@@ -104,7 +104,7 @@ public class Application {
         System.out.println(" Afisare Hoteluri In Functie De rating ");
         for (int i= 0; i < hotels.size(); i++) {
             for (int j = i + 1; j < hotels.size(); j++) {
-                if (hotels.get(i).getRating() > hotels.get(j).getRating()) {
+                if (Integer.parseInt(hotels.get(i).getRating()) > Integer.parseInt(hotels.get(j).getRating())) {
                     Hotel temp = hotels.get(i);
                     hotels.set(i, hotels.get(j));
                     hotels.set(j, temp);
@@ -206,7 +206,7 @@ public class Application {
 
                                     if (fisier.get(m).startsWith("R-")) {
                                         String[] v = (fisier.get(m).split("-"));
-                                        h.setRating(Integer.parseInt(v[1]));
+                                        h.setRating((v[1]));
 
                                     } else {
                                         if (fisier.get(m).startsWith("NC-")) {
