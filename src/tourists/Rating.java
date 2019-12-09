@@ -43,17 +43,14 @@ public class Rating {
 //            }
         Set<String> hset = new HashSet<String>();
         HashMap<String, Set> hmap = new HashMap<String, Set>();
-        ArrayList temp= new ArrayList();
-        for(int i=0;i<tempArray.size();i++){
-            if(tempArray.get(i).equals(hotel)){
-                if(hmap.get(i)==null) {
-                    hmap.put(hotel, hset);
+        hmap.put(hotel, hset);
+        for (int i = 0; i < tempArray.size(); i++) {
+            if (tempArray.get(i).equals(hotel)) {
                     hmap.get(hotel).add(tempArray.get(i + 1));
-                }
-                else hmap.get(hotel).add(tempArray.get(i+1));
             }
         }
-
+        System.out.println(hset);
+        System.out.println(hmap);
 if(hset.contains(ListaCuUseri.get(pozitieTipUser))){
             poateDaRating = true;
         }

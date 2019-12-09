@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AgentieDeTurismMain {
-    static  String booking=null; //"C:\\Users\\constantinb\\args\\booking.txt";
     static  String allDestinations=null; //"C:\\Users\\constantinb\\Documents\\Destination.txt";
+    static  String booking=null; //"C:\\Users\\constantinb\\args\\booking.txt";
     static  String autentification=null;// "C:\\Users\\constantinb\\Documents\\users.txt";
     static  ArrayList<Hotel> hotels = new ArrayList<>();
     static ArrayList<Destination> destinations = new ArrayList<>();
