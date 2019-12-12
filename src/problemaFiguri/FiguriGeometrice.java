@@ -8,7 +8,7 @@ public class FiguriGeometrice {
     static double raza=0;
     static double lungimea=0;
     static double latimea=0;
-    static double latura=0;
+    public static double latura=0;
     static ArrayList listaDate = new ArrayList();
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
@@ -16,39 +16,40 @@ public class FiguriGeometrice {
         System.out.println(" Bine ai venit alege o obtiune ");
         citireTastaturaParametrii(keyboard);
         parcurgereArraylist();
+        System.out.println(listaDate.get(0).hashCode());
+        System.out.println(listaDate.get(1).hashCode());
+
     }
     private static void parcurgereArraylist() {
+
         for (int i = 0; i < listaDate.size(); i++) {
             String[] lineArr;
             String linie = listaDate.get(i).toString();
             lineArr = linie.split("-");
-            String forme=null;
+            String forme= listaDate.get(i).toString();
             switch (forme){
                 case ("patrat"):{
                     Patrat p=new Patrat(latura);
                     p.aria();
-                    System.out.println(p.aria());
+                    System.out.println("patrat cu latura:"+latura+" cu aria "+p.aria());
                 }
             }
-            if (lineArr[0].equals("patrat")) {
-                Patrat p=new Patrat(latura);
-                p.aria();
-                System.out.println(p.aria());
-            }
+
             if (lineArr[0].equals("dreptunghi")) {
                 Dreptunghi d=new Dreptunghi(lungimea,latimea);
                 d.aria();
-                System.out.println(d.aria());
+                System.out.println("dreptunghi cu lungimea:"+lungimea+" si latimea "+latimea+" "+d.aria());
             }
             if (lineArr[0].equals("cerc")) {
                 Cerc c=new Cerc(raza);
                 c.aria();
-                System.out.println(c.aria());
+                System.out.println("cerc cu raza:"+raza+" "+c.aria());
             }
         }
     }
 
     private static void citireTastaturaParametrii(Scanner keyboard) {
+
         while (true) {
             String obtiune = keyboard.nextLine();
             if (obtiune.equals("patrat")) {
@@ -56,7 +57,7 @@ public class FiguriGeometrice {
                 System.out.print("latura:");
                 latura = keyboard.nextInt();
                 System.out.println();
-                listaDate.add(obtiune+"-"+new Patrat(latura));
+                listaDate.add(new Patrat(latura));
                 System.out.println("daca apesi tasta 1 iesi din aplicatie");
                 System.out.println("Introdu o figura geometrica");
             }
@@ -68,7 +69,7 @@ public class FiguriGeometrice {
                 System.out.print("latimea:");
                 latimea = keyboard.nextInt();
                 System.out.println();
-                listaDate.add(obtiune+"-"+new Dreptunghi(lungimea,latimea));
+                listaDate.add(new Dreptunghi(lungimea,latimea));
                 System.out.println("daca apesi tasta 1 iesi din aplicatie");
                 System.out.println("Introdu o figura geometrica");
             }
@@ -76,7 +77,7 @@ public class FiguriGeometrice {
                 System.out.println("Acesta este un cerc te rugam introdu raza cercului");
                 System.out.print("raza:");
                 raza = keyboard.nextInt();
-                listaDate.add(obtiune+"-"+new Cerc(raza));
+                listaDate.add(new Cerc(raza));
                     System.out.println("daca apesi tasta 1 iesi din aplicatie");
                     System.out.println("Introdu o figura geometrica");
             }
