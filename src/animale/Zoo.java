@@ -13,7 +13,7 @@ class Zoo {
     public void make_animals_speak() {
         System.out.println("We are in a ZOO and we can speak ");
         for (int animal_index = 0; animal_index < number_of_animals_in_zoo; animal_index++) {
-              animals_in_zoo[animal_index].make_speak();
+//              animals_in_zoo[animal_index].make_speak();
 //            if(animals_in_zoo[animal_index].animal_name==null){
 //                System.out.println("Hello, I am a default animal called no name ");
 //            }

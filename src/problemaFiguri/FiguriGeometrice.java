@@ -5,32 +5,45 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FiguriGeometrice {
-   static ArrayList listaDate = new ArrayList();
+    static double raza=0;
+    static double lungimea=0;
+    static double latimea=0;
+    static double latura=0;
+    static ArrayList listaDate = new ArrayList();
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("daca apesi tasta 1 iesi din aplicatie");
         System.out.println(" Bine ai venit alege o obtiune ");
         citireTastaturaParametrii(keyboard);
         parcurgereArraylist();
-
     }
-
     private static void parcurgereArraylist() {
         for (int i = 0; i < listaDate.size(); i++) {
             String[] lineArr;
             String linie = listaDate.get(i).toString();
             lineArr = linie.split("-");
+            String forme=null;
+            switch (forme){
+                case ("patrat"):{
+                    Patrat p=new Patrat(latura);
+                    p.aria();
+                    System.out.println(p.aria());
+                }
+            }
             if (lineArr[0].equals("patrat")) {
-                int aria = Integer.parseInt(lineArr[1]) * Integer.parseInt(lineArr[1]);
-                System.out.println(lineArr[0]+" cu latura "+lineArr[1] +" aria este= " + aria);
+                Patrat p=new Patrat(latura);
+                p.aria();
+                System.out.println(p.aria());
             }
             if (lineArr[0].equals("dreptunghi")) {
-                int aria = Integer.parseInt(lineArr[1]) * Integer.parseInt(lineArr[2]);
-                System.out.println(lineArr[0]+" cu latura "+lineArr[1] +" si "+lineArr[2] +" aria este= " + aria);
+                Dreptunghi d=new Dreptunghi(lungimea,latimea);
+                d.aria();
+                System.out.println(d.aria());
             }
-            if (lineArr[0].equals("cerc")){
-                double aria = 3.14 * Integer.parseInt(lineArr[1])*Integer.parseInt(lineArr[1]);
-                System.out.println(lineArr[0]+" cu raza "+lineArr[1] +" aria este= " + aria);
+            if (lineArr[0].equals("cerc")) {
+                Cerc c=new Cerc(raza);
+                c.aria();
+                System.out.println(c.aria());
             }
         }
     }
@@ -41,69 +54,31 @@ public class FiguriGeometrice {
             if (obtiune.equals("patrat")) {
                 System.out.println("acesta este un patrat te rugam introdu latura");
                 System.out.print("latura:");
-                int latura = keyboard.nextInt();
+                latura = keyboard.nextInt();
                 System.out.println();
-                System.out.print("Introdu formula arie");
-
-                String formula = keyboard.next();
-                String lineArr[];
-                lineArr = formula.split("[*]");
-                if (lineArr[0].equals("latura") && lineArr[1].equals("latura")) {
-                    listaDate.add(obtiune + "-" + latura);
-                    System.out.println("Introdu o figura geometrica");
-                    System.out.println("daca apesi tasta 1 iesi din aplicatie");
-                } else{
-                    System.out.println("trebuie introdusa formula corecta");
-                    System.out.println("daca apesi tasta 1 iesi din aplicatie");
-                    System.out.println("Introdu o figura geometrica");
-                }
-
-
+                listaDate.add(obtiune+"-"+new Patrat(latura));
+                System.out.println("daca apesi tasta 1 iesi din aplicatie");
+                System.out.println("Introdu o figura geometrica");
             }
             if (obtiune.equals("dreptunghi")) {
                 System.out.println("Acesta este un dreptunghi te rugam introdu lungimea si latimea");
                 System.out.print("lungiume:");
-                int lungimea = keyboard.nextInt();
+                 lungimea = keyboard.nextInt();
                 System.out.println();
                 System.out.print("latimea:");
-                int latimea = keyboard.nextInt();
+                latimea = keyboard.nextInt();
                 System.out.println();
-                System.out.print("Introdu formula arie");
-                String formula = keyboard.next();
-                String lineArr[];
-                lineArr = formula.split("[*]");
-
-                if (lineArr[0].equals("lungimea") && lineArr[1].equals("latimea") || lineArr[0].equals("latimea") && lineArr[1].equals("lungimea")) {
-                    listaDate.add(obtiune + "-" + lungimea + "-" + latimea);
-                    System.out.println("Introdu o figura geometrica");
-                    System.out.println("daca apesi tasta 1 iesi din aplicatie");
-                } else {
-                    System.out.println("trebuie introdusa formula corecta");
-                    System.out.println("daca apesi tasta 1 iesi din aplicatie");
-                    System.out.println("Introdu o figura geometrica");
-                }
-
+                listaDate.add(obtiune+"-"+new Dreptunghi(lungimea,latimea));
+                System.out.println("daca apesi tasta 1 iesi din aplicatie");
+                System.out.println("Introdu o figura geometrica");
             }
             if (obtiune.equals("cerc")) {
-                System.out.println("Acesta este un triunghi te rugam introdu raza cercului");
+                System.out.println("Acesta este un cerc te rugam introdu raza cercului");
                 System.out.print("raza:");
-                int raza = keyboard.nextInt();
-                System.out.println();
-                System.out.print("Introdu formula arie");
-                String formula = keyboard.next();
-
-                String lineArr[];
-                lineArr = formula.split("[*]");
-                if (lineArr[0].equals("3.14") && lineArr[1].equals("raza") && lineArr[1].equals("raza")) {
-                    listaDate.add(obtiune + "-" + raza);
+                raza = keyboard.nextInt();
+                listaDate.add(obtiune+"-"+new Cerc(raza));
                     System.out.println("daca apesi tasta 1 iesi din aplicatie");
                     System.out.println("Introdu o figura geometrica");
-
-                } else {
-                    System.out.println("trebuie introdusa formula corecta");
-                    System.out.println("daca apesi tasta 1 iesi din aplicatie");
-                    System.out.println("Introdu o figura geometrica");
-                }
             }
             if (obtiune.equals("1")) {
                 break;

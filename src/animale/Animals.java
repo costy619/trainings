@@ -23,6 +23,11 @@ package animale;
             test_zoo.add_animal(another_cat ) ;
             test_zoo.add_animal(some_animal ) ;
             test_zoo.make_animals_speak();
+            Carnivore tiger=new Carnivore("carnivor","tiger");
+            Animal cow=new Animal("cow","vasilica");
+            tiger.feed(cow);
+            test_zoo.add_animal(tiger);
+            tiger.make_speak();
 
         }
     }
