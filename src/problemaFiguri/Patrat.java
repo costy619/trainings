@@ -2,7 +2,7 @@ package problemaFiguri;
 
 
 public class Patrat implements FG {
-    private static double latura=0;
+    double latura=0;
     public Patrat(double latura) {
 this.latura=latura;
     }
