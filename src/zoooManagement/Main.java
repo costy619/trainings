@@ -7,9 +7,9 @@ import java.util.Scanner;
 import static zoooManagement.Zoo.Anime;
 
 public class Main {
-    static int nrUrsi=0;
-    static int nrCanguri=0;
-     static int nrRasi=0;
+    private static int nrUrsi=0;
+    private static int nrCanguri=0;
+    private static int nrRasi=0;
     public static void main(String[] args) {
 
         adaugareLaZooAnimale();
@@ -17,6 +17,7 @@ public class Main {
     }
 
     private static void afisareaInformatiilorRelevante() {
+
         for (int i = 0; i < Anime.size(); i++) {
             System.out.println("Tipul: " +Anime.get(i).getSpecie()+ " culoare: "+Anime.get(i).getCuloare()+" "+Anime.get(i).mers());
         }

@@ -1,9 +1,9 @@
 package zoooManagement;
 
 public class Cangur implements Animale {
-    public static final String culoare="maro";
-    public static final int numarPicioare=2;
-    public static final String specie="cangur";
+    private final String culoare="maro";
+    private final int numarPicioare=2;
+    private final String specie="cangur";
     @Override
     public String mers() {
         return "merge in salturi";
