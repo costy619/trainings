@@ -1,6 +1,6 @@
 package zoooManagement;
 
-public class Cangur implements Animale {
+public class Cangur extends Animale {
     private final String culoare="maro";
     private final int numarPicioare=2;
     private final String specie="cangur";

@@ -1,14 +1,9 @@
 package zoooManagement;
 
-public class Urs implements Animale {
+public class Urs extends Animale {
     private String culoare="brun";
     private int numarPicioare=4;
     private String specie="urs";
-    @Override
-    public String mers() {
-        return "merge in "+numarPicioare+" picioare";
-    }
-
 
     @Override
     public String getCuloare() {
@@ -23,5 +18,10 @@ public class Urs implements Animale {
     @Override
     public int getNumarPicioare() {
         return numarPicioare;
+    }
+
+    @Override
+    public String toString() {
+        return getSpecie();
     }
 }
