@@ -14,18 +14,18 @@ public class Meniu {
             switch (obtiune) {
                 case ("1"):
                     Cart c = new Cart();
-//                    Product prod= new Product();
-//                    System.out.println("Intruduceti ID-ul produsului");
-//                    prod.setId(keyboard.nextInt());
-//                    System.out.println("Introduceti numele produsului");
-//                    prod.setName(keyboard.next());
-//                    System.out.println("Introduceti culoarea produsului");
-//                    prod.setColor(keyboard.next());
-//                    System.out.println("introduceti tipul produsului ex:clothing, electronics");
-//                    prod.setType(keyboard.next());
-//                    System.out.println("Introduceti pretul produsului ");
-//                    prod.setPrice(keyboard.nextDouble());
-//                    c.addProduct();
+                    Product prod= new Product();
+                    System.out.println("Intruduceti ID-ul produsului");
+                    prod.setId(keyboard.nextInt());
+                    System.out.println("Introduceti numele produsului");
+                    prod.setName(keyboard.next());
+                    System.out.println("Introduceti culoarea produsului");
+                    prod.setColor(keyboard.next());
+                    System.out.println("introduceti tipul produsului ex:clothing, electronics");
+                    prod.setType(keyboard.next());
+                    System.out.println("Introduceti pretul produsului ");
+                    prod.setPrice(keyboard.nextDouble());
+                    c.addProduct(prod);
                     break;
                 case ("2"):
                     Cart c1 = new Cart();
