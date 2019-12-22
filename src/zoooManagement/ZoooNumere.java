@@ -11,19 +11,6 @@ import static zoooManagement.Zoo.Anime;
 
 
 public class ZoooNumere{
-//
-//    private  int nrUrsi=0;
-//    private  int nrCanguri=0;
-//    private int nrRasi=0;
-//    void afisareaInformatiilorRelevante() {
-//
-//        for (int i = 0; i < Anime.size(); i++) {
-//            System.out.println("Tipul: " +Anime.get(i).getSpecie()+ " culoare: "+Anime.get(i).getCuloare()+" "+Anime.get(i).mers());
-//        }
-//        if(nrUrsi>0) System.out.println("La gradina zoologica sunt cazati: "+nrUrsi+" Ursi ");
-//        if(nrCanguri>0) System.out.println("La gradina zoologica sunt cazati: "+nrCanguri+" Canguri");
-//        if(nrRasi>0) System.out.println("La gradina zoologica sunt cazati: "+nrRasi+" Rasi ");
-//    }
 
     void adaugareLaZooAnimale() {
         Scanner keyboard = new Scanner(System.in);
