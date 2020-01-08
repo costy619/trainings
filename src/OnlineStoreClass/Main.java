@@ -7,6 +7,5 @@ public class Main {
         d.depozitProduse();
         m.meniu();
         }
-
     }
 

@@ -8,10 +8,8 @@ import java.util.Scanner;
 
 public class ReadFirst3linesFromAfile {
     public static void readFirst3linesFromAfile() {
-
         ArrayList<String> myList = new ArrayList<>();
         Scanner keyboard = new Scanner(System.in);
-
         double n;
         while (true) {
             try {
@@ -21,6 +19,7 @@ public class ReadFirst3linesFromAfile {
                 System.out.println("introdu un numar");
                 keyboard.nextLine();
                 continue;
+
             }
             try {
                 Scanner sc = getScannerFisiere("Introdu fisierul  - ");
@@ -37,14 +36,11 @@ public class ReadFirst3linesFromAfile {
                     }
                 }
                 break;
-
-
             } catch (FileNotFoundException e) {
                 System.out.println("Reintrodu alt path");
             }
         }
         }
-
     private static Scanner getScannerFisiere(String s) throws FileNotFoundException {
         System.out.println(s);
         Scanner keyboard = new Scanner(System.in);
