@@ -8,20 +8,22 @@ public class Triangle extends Shape {
     private Point point2;
     private Point point3;
     private Point point4;
-public Triangle(){
-}
+
+    public Triangle() {
+    }
+
     @Override
     public double computeArea() {
-        double aria=(getPoint2().getX() * (getPoint3().getY() - getPoint4().getY()) + getPoint3().getX() * (getPoint4().getY() - getPoint2().getY()) + getPoint4().getX() * (getPoint2().getY()- getPoint3().getY())) / 2;
+        double aria = (getPoint2().getX() * (getPoint3().getY() - getPoint4().getY()) + getPoint3().getX() * (getPoint4().getY() - getPoint2().getY()) + getPoint4().getX() * (getPoint2().getY() - getPoint3().getY())) / 2;
         return Math.abs(aria);
     }
 
     @Override
     public double computePerimeter() {
-        edge1=Math.sqrt((getPoint3().getY() - getPoint2().getY()) * (getPoint3().getY() - getPoint2().getY()) + ((getPoint3().getX() - getPoint2().getX())*(getPoint3().getX() - getPoint2().getX())));
-       edge2=Math.sqrt((getPoint4().getY() - getPoint2().getY()) * (getPoint4().getY() - getPoint2().getY()) + ((getPoint4().getX() - getPoint2().getX())*(getPoint4().getX() - getPoint2().getX())));
-               edge3=Math.sqrt((getPoint4().getY() - getPoint3().getY()) * (getPoint4().getY() - getPoint3().getY()) + ((getPoint4().getX() - getPoint3().getX())*(getPoint4().getX() - getPoint3().getX())));
-        double perimetru= edge1+edge2+edge3;
+        edge1 = Math.sqrt((getPoint3().getY() - getPoint2().getY()) * (getPoint3().getY() - getPoint2().getY()) + ((getPoint3().getX() - getPoint2().getX()) * (getPoint3().getX() - getPoint2().getX())));
+        edge2 = Math.sqrt((getPoint4().getY() - getPoint2().getY()) * (getPoint4().getY() - getPoint2().getY()) + ((getPoint4().getX() - getPoint2().getX()) * (getPoint4().getX() - getPoint2().getX())));
+        edge3 = Math.sqrt((getPoint4().getY() - getPoint3().getY()) * (getPoint4().getY() - getPoint3().getY()) + ((getPoint4().getX() - getPoint3().getX()) * (getPoint4().getX() - getPoint3().getX())));
+        double perimetru = edge1 + edge2 + edge3;
         return perimetru;
 
     }

@@ -1,20 +1,22 @@
 package geometric.problem;
+
 class Circle extends Shape {
 
     private Point point;
     private double radius;
-    public Circle(){
+
+    public Circle() {
     }
 
     @Override
     public double computeArea() {
-        double arie= getRadius()*getRadius()*3.14;
+        double arie = getRadius() * getRadius() * 3.14;
         return arie;
     }
 
     @Override
     public double computePerimeter() {
-        return getRadius()*2*3.14;
+        return getRadius() * 2 * 3.14;
     }
 
     @Override
