@@ -1,4 +1,4 @@
-package ex4;
+package geometric.problem;
 class Circle extends Shape {
 
     private Point point;

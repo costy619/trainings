@@ -1,4 +1,4 @@
-package ex4;
+package geometric.problem;
 
 public class Rectangle extends Shape {
     double length;
