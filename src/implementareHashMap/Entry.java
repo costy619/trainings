@@ -11,6 +11,6 @@ class Entry<K, V> {
 
     }
 
-    // getters, equals, hashCode and toString
+
 
 }

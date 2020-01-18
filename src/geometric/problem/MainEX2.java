@@ -1,4 +1,4 @@
-package ex4;
+package geometric.problem;
 
 public class MainEX2 {
     public static void main(String args []) {
