@@ -23,7 +23,7 @@ public class Main {
         problema3FrecventaPreturi(hotels);
 //        ArrayList<String>hoteluri=new ArrayList<>();
 //        problema3FrecventaPreturiVar2(hotels, hoteluri);
-      //  problema3VectorDeFrecventaVaR3();
+      //  ();problema3VectorDeFrecventaVaR3
         problema4Binarysearch();
 //        problema5(hotels);
 //        list();

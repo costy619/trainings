@@ -1,12 +1,16 @@
 package ex4;
 
 public class MainShapes {
+    int cc;
     public static void main(String[] args) {
         Circle circle = getCircle();
         Triangle triangle = getTriangle();
         Rectangle rectangle = getRectangle();
         getArray(circle, triangle, rectangle);
         afisariEx1(circle, triangle, rectangle);
+        int c  = 0 ;
+        System.out.println(c);
+
     }
     private static void getArray(Circle circle, Triangle triangle, Rectangle rectangle) {
         Shape[] shapesArray = new Shape[3];
