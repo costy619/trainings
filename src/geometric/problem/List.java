@@ -1,6 +1,4 @@
-package ex4;
-
-import java.util.ArrayList;
+package geometric.problem;
 
 public interface List<T> {
     void add(T value) ;
