@@ -11,7 +11,7 @@ public class MyMap<K, V> implements Map <K,V>{
         Entry<K, V> entry = new Entry<>(key, value, null);
         locatie = getHash(key) %sizeinitial;
         Entry<K, V> existing = vector[locatie];
-        if ( vector[locatie] == null) {
+        if ( vector[locatie] ==  null) {
             vector[locatie] = entry;
             numberOfObjectsInHash++;
             System.out.println("0.S-a pus"+entry.key);
