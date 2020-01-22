@@ -1,4 +1,4 @@
-package Tema3EX1;
+package tema3ex1;
 
 public class MainEx1 {
     public static void main(String[] args) {

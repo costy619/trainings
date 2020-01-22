@@ -1,4 +1,4 @@
-package Tema3EX1;
+package tema3ex1;
 
 public interface ComplexNumber {
     Complex add(Complex number);//adds this and number and returns a new Complex instance

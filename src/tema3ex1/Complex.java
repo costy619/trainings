@@ -1,4 +1,4 @@
-package Tema3EX1;
+package tema3ex1;
 
 public class Complex implements ComplexNumber {
     double real, img;
