@@ -3,11 +3,12 @@ package Tema3Ex2;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+
 public class MainEx2 {
     public static void main(String[] args) {
-        CardDeck cardDeck= new CardDeck();
+        CardDeck cardDeck = new CardDeck();
         cardDeck.createArraylistWith52cards();
-        cardDeck.markAsAvailable();
+       cardDeck.addallcards();
 //        cardDeck.dealHand(55);
 //        cardDeck.dealHand(4);
 //        cardDeck.shuffle();
@@ -28,13 +29,13 @@ public class MainEx2 {
 
     }
 
-    private static void showCards( ArrayList<Card> arrayList) {
-        if(arrayList.size()>0) {
+    private static void showCards(ArrayList<Card> arrayList) {
+        if (arrayList.size() > 0) {
             for (int i = 0; i < arrayList.size(); i++) {
                 System.out.print(arrayList.get(i).getNumber());
                 System.out.println(CardDeck.typeOfCard(i, arrayList));
             }
-        }else System.out.println("lista goala");
+        } else System.out.println("lista goala");
     }
 
 

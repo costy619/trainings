@@ -7,37 +7,36 @@ import java.util.Collections;
 
 public class CardDeck {
     static ArrayList<Card> allcards = new ArrayList<>();
-    static ArrayList<Card> availablecards=new ArrayList<>();
-    static ArrayList<Card> used=new ArrayList<>();
-    int howMany=0;
-public void markAsAvailable(){
-    for(int i=0;i<allcards.size();i++) {
-        availablecards.add(allcards.get(i));
+    static ArrayList<Card> availablecards = new ArrayList<>();
+    static ArrayList<Card> used = new ArrayList<>();
+    int howMany = 0;
+
+    void addallcards(){
+        availablecards.addAll(allcards);
     }
-}
-   public int dealHand(int cards) {
+    public int dealHand(int cards) {
         int d = availablecards.size();
-        if(d>0) {
+        if (d > 0) {
             for (int i = 0; i < cards; i++) {
                 double x = (Math.random() * ((d - 1) + 1)) + 0;
                 int j = (int) x;
-                if(d>0) {
+                if (d > 0) {
                     System.out.println("cartea soasa este " + availablecards.get(j).getNumber() + " de " + typeOfCard(j, availablecards));
                     used.add(availablecards.get(j));
                     availablecards.remove(j);
                     d--;
                     howMany++;
-                }else System.out.println("lista este goala pachetul e gol");
+                } else System.out.println("lista este goala pachetul e gol");
             }
-        }else{
+        } else {
             System.out.println("Lista goala");
             return 0;
         }
-            return cards;
+        return cards;
     }
 
     void shuffle() {
-        availablecards=allcards;
+        availablecards.addAll(allcards);
         used.removeAll(used);
         Collections.shuffle(availablecards);
 
@@ -77,11 +76,13 @@ public void markAsAvailable(){
             return " de frunza";
         else return null;
     }
-    public int getAvailableCardCount(){
+
+    public int getAvailableCardCount() {
 
         return availablecards.size();
     }
-    public int getUsedCardCount(){
-    return used.size();
+
+    public int getUsedCardCount() {
+        return used.size();
     }
 }
