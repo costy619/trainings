@@ -3,9 +3,7 @@ package tema4ex1;
 import OnlineStoreClass.C;
 import tema4ex1.Building.Category;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -70,35 +68,47 @@ public class Main {
         System.out.println("media Dalas "+mediaD);
     }
     private static void averageForEach (ArrayList<Building> arrayList) {
-        int c = 0;
-        int d = 0;
-        int e = 0;
-        int f = 0;
-        int mediaR =0;
-        int mediaRes =0;
-        int mediaOF =0;
-        int mediaH =0;
-        for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i).getCategoryAsString().equals(Category.RELIGIOUS)) {
-                c++;
-                mediaR=(mediaR+arrayList.get(i).price)/c;
+        Map<Category,ArrayList<Building>> gBC= new HashMap<>();
+        for(Building building:arrayList){
+            Building.Category category =building.getCategoryAsString();
+            List<Building> buildings= gBC.get(category);
+            if(buildings==null){
+                gBC.put(category, new ArrayList<>());
             }
-            if (arrayList.get(i).getCategoryAsString().equals(Category.RESIDENTIAL)) {
-                d++;
-                mediaRes=(mediaRes+arrayList.get(i).price)/d;
-            }
-            if (arrayList.get(i).getCategoryAsString().equals(Category.OFFICE)) {
-                e++;
-                mediaOF=(mediaOF+arrayList.get(i).price)/e;
-            }
-            if (arrayList.get(i).getCategoryAsString().equals(Category.HOSPITAL)) {
-                f++;
-                mediaH=(mediaH+arrayList.get(i).price)/e;
-            }
+           gBC.get(category).add(building);
         }
-        System.out.println("media RELIGIOUS "+mediaR);
-        System.out.println("media HOSPITAL "+mediaH);
-        System.out.println("media OFFICE "+mediaOF);
-        System.out.println("media RESIDENTIAL "+mediaRes);
+        System.out.println(gBC);
+
+
+//        int c = 0;
+//        int d = 0;
+//        int e = 0;
+//        int f = 0;
+//        int mediaR =0;
+//        int mediaRes =0;
+//        int mediaOF =0;
+//        int mediaH =0;
+//        for (int i = 0; i < arrayList.size(); i++) {
+//            if (arrayList.get(i).getCategoryAsString().equals(Category.RELIGIOUS)) {
+//                c++;
+//                mediaR=(mediaR+arrayList.get(i).price)/c;
+//            }
+//            if (arrayList.get(i).getCategoryAsString().equals(Category.RESIDENTIAL)) {
+//                d++;
+//                mediaRes=(mediaRes+arrayList.get(i).price)/d;
+//            }
+//            if (arrayList.get(i).getCategoryAsString().equals(Category.OFFICE)) {
+//                e++;
+//                mediaOF=(mediaOF+arrayList.get(i).price)/e;
+//            }
+//            if (arrayList.get(i).getCategoryAsString().equals(Category.HOSPITAL)) {
+//                f++;
+//                mediaH=(mediaH+arrayList.get(i).price)/e;
+//            }
+//        }
+//        System.out.println("media RELIGIOUS "+mediaR);
+//        System.out.println("media HOSPITAL "+mediaH);
+//        System.out.println("media OFFICE "+mediaOF);
+//        System.out.println("media RESIDENTIAL "+mediaRes);
     }
 }
