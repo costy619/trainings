@@ -10,17 +10,17 @@ import java.util.regex.Pattern;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-      ArrayList<String> listaCuURLdinFIsiere;
+        ArrayList<String> listaCuURLdinFIsiere;
         ArrayList<String> result = new ArrayList<String>();
-        ReadURLfromFile("C:\\Users\\constantinb\\Documents\\url.txt");
-        ArrayList<String> readfrom=ReadURLfromFile("C:\\Users\\constantinb\\Documents\\url.txt");
-        ArrayList<String> s = GettingStringsWithURLS(readfrom);
+        readURLfromFile("C:\\Users\\constantinb\\Documents\\url.txt");
+        ArrayList<String> readfrom = readURLfromFile("C:\\Users\\constantinb\\Documents\\url.txt");
+        ArrayList<String> s = gettingStringsWithURLS(readfrom);
         scriereDoarLinkuri(result, s);
-        ReadURLfromFile("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
-        ArrayList<String> readfrom1=ReadURLfromFile("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
-        ArrayList<String> x = GettingStringsWithURLS(readfrom1);
+        readURLfromFile("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
+        ArrayList<String> readfrom1 = readURLfromFile("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
+        ArrayList<String> x = gettingStringsWithURLS(readfrom1);
         scriereDoarLinkuri(result, x);
-        rescriereListaInFisier(result);
+        rescriereListaInFisier(result,"C:\\Users\\constantinb\\Documents\\aldoilea.txt");
     }
 
     private static void scriereDoarLinkuri(ArrayList<String> result, ArrayList<String> s) {
@@ -37,7 +37,7 @@ public class Test {
         }
     }
 
-    private static ArrayList<String> GettingStringsWithURLS(ArrayList<String> readfrom) {
+    private static ArrayList<String> gettingStringsWithURLS(ArrayList<String> readfrom) {
         URL url;
         InputStream is = null;
         BufferedReader br;
@@ -45,45 +45,46 @@ public class Test {
         ArrayList<String> s = new ArrayList<>();
 
         for (String reading : readfrom) {
-            try{
-            url = new URL(reading);
-            is = url.openStream();  // throws an IOException
-            br = new BufferedReader(new InputStreamReader(is));
-
-            while ((line = br.readLine()) != null) {
-                if (line.contains("href=") && line.contains("https://"))
-//                    System.out.println(line.trim());
-                    s.add(line.trim());
-            }
-        } catch(MalformedURLException mue){
-            mue.printStackTrace();
-        } catch(IOException ioe){
-            ioe.printStackTrace();
-        } finally{
             try {
-                if (is != null) is.close();
+                url = new URL(reading);
+                is = url.openStream();  // throws an IOException
+                br = new BufferedReader(new InputStreamReader(is));
+
+                while ((line = br.readLine()) != null) {
+                    if (line.contains("href=") && line.contains("https://"))
+//                    System.out.println(line.trim());
+                        s.add(line.trim());
+                }
+            } catch (MalformedURLException mue) {
+                mue.printStackTrace();
             } catch (IOException ioe) {
-                //exception
+                ioe.printStackTrace();
+            } finally {
+                try {
+                    if (is != null) is.close();
+                } catch (IOException ioe) {
+                    //exception
+                }
             }
         }
-    }
         return s;
     }
 
-    private static ArrayList<String> ReadURLfromFile(String path) throws IOException {
+    private static ArrayList<String> readURLfromFile(String path) throws IOException {
         BufferedReader bra = new BufferedReader(new FileReader(path));
-       ArrayList<String>list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
         String urlLine;
         while ((urlLine = bra.readLine()) != null) {
             System.out.println(urlLine);
             list.add(urlLine);
-            }
+        }
         return list;
     }
-    public static void rescriereListaInFisier(ArrayList<String> tempArray) {
+
+    public static void rescriereListaInFisier(ArrayList<String> tempArray,String path) {
         try {
             try {
-                PrintWriter pr = new PrintWriter("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
+                PrintWriter pr = new PrintWriter(path);
                 for (int i = 0; i < tempArray.size(); i++) {
                     pr.println((tempArray.get(i)));
                 }
