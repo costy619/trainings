@@ -1,4 +1,4 @@
-package OnlineStoreClass;
+package onlineStoreClass;
 
 import java.util.ArrayList;
 

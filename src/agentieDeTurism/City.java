@@ -1,4 +1,4 @@
-package tourists;
+package agentieDeTurism;
 
 import java.util.ArrayList;
 

@@ -1,12 +1,9 @@
 package implementareHashMap;
 
-import java.util.Iterator;
-
 public class Main {
     public static void main(String[] args) {
         MyMap<Integer, Integer> myMap = new MyMap<>();
-        myMap.put(8346,9
-        );
+        myMap.put(8346,9);
         myMap.put(368,10);
         myMap.put(10,56);
         myMap.put(11,946);

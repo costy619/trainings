@@ -60,10 +60,6 @@ ArrayList<Integer> list1=new ArrayList<>();
             System.out.print(m.getKey()+ "  ");
             System.out.println(m.getValue());
         }
-        System.out.println("varianta cu o remove merge doar cu lista sorta");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
         System.out.println("varianta cu a doua lista");
         for (int i = 0; i < list1.size(); i++) {
             System.out.println(list1.get(i));

@@ -1,4 +1,4 @@
-package OnlineStoreClass;
+package onlineStoreClass;
 
 public class Customer {
     public Adress address=new Adress();

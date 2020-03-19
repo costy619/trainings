@@ -1,11 +1,11 @@
-package tourists;
+package agentieDeTurism;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static tourists.AgentieDeTurismMain.*;
-import static tourists.Rating.capabilDeAOferiRating;
+import static agentieDeTurism.AgentieDeTurismMain.*;
+import static agentieDeTurism.Rating.capabilDeAOferiRating;
 
 public class Meniu {
     public static void meniu(ArrayList<String> listaCuTipuriDeUseri, int pozitieTipUser) {

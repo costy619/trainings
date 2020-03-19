@@ -1,4 +1,4 @@
-package tourists;
+package agentieDeTurism;
 
 public class Client {
     private String name;

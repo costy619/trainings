@@ -1,8 +1,8 @@
-package OnlineStoreClass;
+package onlineStoreClass;
 
 import java.util.Scanner;
 
-import static OnlineStoreClass.Store.produsele;
+import static onlineStoreClass.Store.produsele;
 public class Meniu {
     public void meniu() {
 

@@ -1,4 +1,4 @@
-package tourists;
+package agentieDeTurism;
 
 public class Hotel {
     private int availableRooms = 22;

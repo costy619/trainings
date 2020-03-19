@@ -1,6 +1,6 @@
-package animale;
+package gradinaZoo;
 
-   public class  Animals{
+   public class  Main{
         public static void main( String[] not_in_use )
         {
             Animal  cat_object  =  new Animal( "cat", "Ludwig") ;

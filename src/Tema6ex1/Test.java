@@ -16,6 +16,7 @@ public class Test {
         ArrayList<String> readfrom = readURLfromFile("C:\\Users\\constantinb\\Documents\\url.txt");
         ArrayList<String> s = gettingStringsWithURLS(readfrom);
         scriereDoarLinkuri(result, s);
+        rescriereListaInFisier(result,"C:\\Users\\constantinb\\Documents\\aldoilea.txt");
         readURLfromFile("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
         ArrayList<String> readfrom1 = readURLfromFile("C:\\Users\\constantinb\\Documents\\aldoilea.txt");
         ArrayList<String> x = gettingStringsWithURLS(readfrom1);

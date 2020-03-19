@@ -1,4 +1,4 @@
-package animale;
+package gradinaZoo;
 
 public class Carnivore extends Animal{
     public void feed( Animal animal_to_be_eaten ) {

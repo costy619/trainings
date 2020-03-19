@@ -1,7 +1,4 @@
-package OnlineStoreClass;
-
-import javax.smartcardio.CardTerminal;
-import java.util.ArrayList;
+package onlineStoreClass;
 
 public class Cart implements C{
 

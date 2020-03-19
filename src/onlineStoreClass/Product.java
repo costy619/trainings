@@ -1,4 +1,4 @@
-package OnlineStoreClass;
+package onlineStoreClass;
 
 public class Product {
      private int id;

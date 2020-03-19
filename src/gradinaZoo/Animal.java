@@ -1,4 +1,4 @@
-package animale;
+package gradinaZoo;
 
 public class Animal {
 

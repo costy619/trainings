@@ -1,16 +1,12 @@
-package tourists;
+package agentieDeTurism;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import static java.lang.Integer.numberOfLeadingZeros;
 import static java.lang.Integer.parseInt;
-import static tourists.Application.hotels;
+import static agentieDeTurism.Application.hotels;
 
 public class Main {
 

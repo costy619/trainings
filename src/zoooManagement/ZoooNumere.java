@@ -1,7 +1,5 @@
 package zoooManagement;
 
-import animale.Animal;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

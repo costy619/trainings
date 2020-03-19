@@ -1,6 +1,4 @@
-package ArrayListEx;
-
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+package arrayListEx;
 
 import java.util.ArrayList;
 import java.util.Scanner;

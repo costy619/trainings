@@ -1,11 +1,10 @@
-package tourists;
+package agentieDeTurism;
 
-import javax.management.StringValueExp;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-import static tourists.AgentieDeTurismMain.*;
+import static agentieDeTurism.AgentieDeTurismMain.*;
 
 public class Rating {
     static boolean toateConditiileInordine=false;

@@ -1,4 +1,4 @@
-package tourists;
+package agentieDeTurism;
 
 import java.io.File;
 import java.io.FileNotFoundException;

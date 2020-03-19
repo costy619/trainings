@@ -1,12 +1,10 @@
-package tourists;
+package agentieDeTurism;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.*;
-
-import static java.lang.Integer.*;
 
 public class Application {
      public static ArrayList<Hotel> hotels = new ArrayList<>();
@@ -42,10 +40,7 @@ public class Application {
             System.out.println(iterator.next());
         }
 
-
-
     }
-
 
     private static void problema3AdaugareInFisier() {
         ArrayList<String> tempArray=new ArrayList<>();

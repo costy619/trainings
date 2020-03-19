@@ -14,8 +14,6 @@ public class Hashmap {
         list.add("b");
         list.add("c");
 
-
-
         HashMap<String,Integer> map=new HashMap<>();
         Iterator<String> iterator1 = list.iterator();
 
