@@ -1,6 +1,4 @@
 package Collections;
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +9,6 @@ public class Hashmap {
         this.b=b;
         this.c=c;
     }
-
     public int getB() {
         return b;
     }
@@ -20,7 +17,6 @@ public class Hashmap {
     }
 
     public static void main(String[] args) {
-
         HashMap<Integer,Hashmap> hashMap= new java.util.HashMap();
         Hashmap n = new Hashmap(2, 3);
         hashMap.put(1, new Hashmap(4, 6));
@@ -29,7 +25,6 @@ public class Hashmap {
             int key = mapElement.getKey();
             Hashmap g =mapElement.getValue();
             System.out.println("key is "+key+" values "+g.getB()+" "+g.getC());
-
         }
     }
 }

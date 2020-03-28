@@ -1,4 +1,4 @@
-package Tema6ex1;
+package tema6ex1;
 
 import java.io.*;
 import java.net.MalformedURLException;

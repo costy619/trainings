@@ -1,25 +1,24 @@
 package teste;
 
-
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.ArrayList;
 
 public class Test {
-
     public static void main(String[] args) {
+        String b="aaabccddabb";
+        ArrayList listaCuNumarare = new ArrayList<>();
+        int count = 1;
+        for (int i = 0; i < b.length(); i++) {
+            if (i < b.length() - 1 && b.charAt(i) == b.charAt(i + 1)) {
+                count++;
 
-        HashMap<Integer, Test1> s = new HashMap();
-        Test1 n = new Test1(2, 3);
-        s.put(1, new Test1(4, 6));
-        s.put(2, n);
-        Iterator b = s.entrySet().iterator();
-        for (HashMap.Entry mapElement : s.entrySet()) {
-            int key = (int)mapElement.getKey();
-            Test1 g =(Test1) mapElement.getValue();
-                    System.out.print(key);
-            System.out.println(g.getB());
+            } else {
+                listaCuNumarare.add(b.charAt(i));
+                listaCuNumarare.add(count);
+                count=1;
+            }
         }
+        System.out.println(listaCuNumarare);
     }
-    }
+}
 
 
